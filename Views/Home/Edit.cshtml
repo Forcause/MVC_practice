@@ -1,0 +1,40 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model WebApplication.Models.Auto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление авто</h1>
+
+@using (Html.BeginForm())
+{
+    <h4>Авто</h4>
+    @Html.HiddenFor(model => model.Id)
+    <p>
+        Название марки <br/>
+        @Html.DropDownListFor(model => model.Mark, ViewBag.Corps as SelectList)
+    </p>
+
+    <p>
+        Название модели <br/>
+        @Html.EditorFor(model => model.Model)
+    </p>
+
+    <p>
+        Год выпуска <br/>
+        @Html.EditorFor(model => model.Year)
+    </p>
+
+    <p>
+        Тип кузова <br/>
+        @Html.EditorFor(model => model.BodyType)
+    </p>
+
+    <p>
+    <input type="submit" value="Добавить авто"/>
+    </p>  
+} 
+<div>
+    @Html.ActionLink("К списку авто", "Index")
+</div>

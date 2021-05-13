@@ -1,0 +1,54 @@
+@model IEnumerable<WebApplication.Models.Auto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Модель
+            </th>
+            <th>
+                Марка
+            </th>
+            <th>
+                Год выпуска
+            </th>
+            <th>
+                Тип кузова
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkNavigation.Mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyType)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", item)
+                @Html.ActionLink("Удалить", "Delete", item)
+                @Html.ActionLink("Подробнее", "Details", item)
+            </td>
+        </tr>
+}
+    <div class="auto-list">
+        @Html.ActionLink("Добавить авто", "Create")
+    </div>
+    </tbody>
+</table>

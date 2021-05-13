@@ -1,0 +1,42 @@
+﻿@model Auto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Информация об автомобиле и производителе</h2>
+
+<div class="display-label"><b>Марка/Производитель</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Mark)
+</div>
+
+<div class="display-label"><b>Модель</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Model)
+</div>
+
+<div class="display-label"><b>Год выпуска</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Year)
+</div>
+
+<div class="display-label"><b>Тип кузова</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.BodyType)
+</div>
+
+<div class="display-label"><b>Страна производителя</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MarkNavigation.Location)
+</div>
+
+<div class="display-label"><b>Президент компании</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MarkNavigation.President)
+</div>
+
+<div class="display-label"><b>Продукция компании</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MarkNavigation.Production)
+</div>
