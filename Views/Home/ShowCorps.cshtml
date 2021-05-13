@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication.Models.Corps>
+
+@{
+    ViewData["Title"] = "Производители";
+}
+
+<h1>Производители</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Марка
+        </th>
+        <th>
+            Страна производителя
+        </th>
+        <th>
+            Президент компании
+        </th>
+        <th>
+            Продукция
+        </th>
+        <th>
+            Кол-во авто
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.President)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Production)
+            </td>
+                
+            <td>
+                @item.Autos.Count
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditCorp", item)
+                @Html.ActionLink("Удалить", "DeleteCorp", item)
+            </td>
+        </tr>
+    }
+    <div class="auto-list">
+        @Html.ActionLink("Список авто", "Index")
+        @Html.ActionLink("Добавить производителя", "CreateCorp")
+    </div>
+    <div class="counter">
+        <td>Количество производителей: @Model.ToList().Count()</td>
+        </div>
+    </tbody>
+</table>

@@ -178,3 +178,6 @@ C:\Users\Forcause\RiderProjects\WebApplication\bin\Debug\net5.0\System.Web.WebPa
 C:\Users\Forcause\RiderProjects\WebApplication\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 C:\Users\Forcause\RiderProjects\WebApplication\obj\Debug\net5.0\Razor\Views\Home\Edit.cshtml.g.cs
 C:\Users\Forcause\RiderProjects\WebApplication\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\Forcause\RiderProjects\WebApplication\obj\Debug\net5.0\Razor\Views\Home\CreateCorp.cshtml.g.cs
+C:\Users\Forcause\RiderProjects\WebApplication\obj\Debug\net5.0\Razor\Views\Home\ShowCorps.cshtml.g.cs
+C:\Users\Forcause\RiderProjects\WebApplication\obj\Debug\net5.0\Razor\Views\Home\EditCorp.cshtml.g.cs

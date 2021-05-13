@@ -1,11 +1,11 @@
 @model IEnumerable<WebApplication.Models.Auto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Автомобили";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Автомобили</h1>
 
 <table class="table">
     <thead>
@@ -48,7 +48,24 @@
         </tr>
 }
     <div class="auto-list">
+        @Html.ActionLink("Список производителей", "ShowCorps")
         @Html.ActionLink("Добавить авто", "Create")
+    </div>
+    <div class="counter">
+        <td>Количество авто: @Model.ToList().Count()</td>
+        <td>
+            Машин по странам: <br/>
+            @foreach (var gr in Model.ToList().GroupBy(a => a.MarkNavigation.Location))
+            {
+                string res = gr.Key + " : " + gr.Count();
+                @res
+                <br/>
+            }
+        </td>
+        <td>
+            Среднее кол-во машин от производителя:<br/>
+                @Math.Round(Model.ToList().GroupBy(a => a.MarkNavigation.Mark).Average(a => a.Count()), 2)
+        </td>
     </div>
     </tbody>
 </table>

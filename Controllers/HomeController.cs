@@ -121,5 +121,74 @@ namespace WebApplication.Controllers
 
             return View(auto);
         }
+
+        [HttpGet]
+        public IActionResult CreateCorp()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateCorp(Corps corp)
+        {
+            try
+            {
+                db.Corps.Add(corp);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public IActionResult ShowCorps()
+        {
+            var corps = db.Corps.Include(a => a.Autos);
+            return View(corps);
+        }
+        
+        [HttpGet]
+        public IActionResult EditCorp(string mark)
+        {
+            if (mark == null)
+            {
+                return Error();
+            }
+
+            Corps corp = db.Corps.Find(mark);
+            if (corp != null)
+            {
+                return View(corp);
+            }
+
+            return RedirectToAction("ShowCorps");
+        }
+
+        [HttpPost]
+        public IActionResult EditCorp(Corps corp)
+        {
+            db.Entry(corp).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ShowCorps");
+        }
+
+        public IActionResult DeleteCorp(string mark)
+        {
+            if (mark == null)
+            {
+                return Error();
+            }
+
+            Corps corp = db.Corps.Find(mark);
+            
+            if (corp != null)
+            {
+                db.Corps.Remove(corp);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShowCorps");
+        }
     }
 }
