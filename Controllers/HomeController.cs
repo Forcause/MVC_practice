@@ -82,9 +82,17 @@ namespace WebApplication.Controllers
         [HttpPost]
         public IActionResult Edit(Auto auto)
         {
-            db.Entry(auto).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Entry(auto).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
+            
         }
 
         [HttpGet]
